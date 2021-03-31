@@ -14,7 +14,7 @@ const makeArrFromUtf = (nickname = ' ') => {
 };
 
 // console.log(makeArrFromUtf('안예인')); // [15, 9, 17]
-console.log(makeArrFromUtf('Harry')); // [15, 8, 7, 7, 14]
+// console.log(makeArrFromUtf('Harry')); // [15, 8, 7, 7, 14]
 
 const numberToString = number => (number < 10 ? '0' + number : '' + number);
 
@@ -54,43 +54,46 @@ export default class BitFace extends Component {
     }
   }
 
+  getRandomImg = inputValue => {
+    // 랜덤 프로필 이미지 주소 생성
+    const arr = makeArrFromUtf(inputValue);
+    const combinedNumbers = combineNumbersInArr(arr);
+    const url = getFaceUrl(combinedNumbers);
+
+    this.setState({ imageUrl: url });
+  };
+
+  handleInput = e => {
+    const value = e.target.value;
+
+    this.setState({
+      input: value,
+    }, () => {
+      this.getRandomImg(this.state.input);
+      console.log(this.state);
+    });
+  };
+
+
   render() {
-    const handleInput = e => {
-      const { name, value } = e.target;
-
-      this.setState({
-        [name]: value,
-      },
-      console.log(this.state));
-    };
-
-    const getRandomImg = () => {
-      // 랜덤 프로필 이미지 주소 생성
-      const arr = makeArrFromUtf(this.state.input);
-      const combinedNumbers = combineNumbersInArr(arr);
-      const url = getFaceUrl(combinedNumbers);
-
-      this.setState({ imageUrl: url });
-
-      console.log(this.state.imageUrl);
-    };
-
     return (
       <div className="container">
         <div className="placeImage">
           <figure>
-            <img src={this.state.imageUrl} alt="임시 이미지" />
+            <img src={this.state.imageUrl} alt="프로필 이미지" />
           </figure>
         </div>
         <input
           id="nicknameInput"
           type="text"
-          value={this.input}
-          name="input"
-          onChange={handleInput}
+          value={this.state.input}
+          onChange={e => {
+            this.handleInput(e);
+            // this.getRandomImg();
+          }}
         />
         <label htmlFor="nicknameInput">사용하실 닉네임을 입력해주세요.</label>
-        <StyledButton onClick={getRandomImg}>클릭</StyledButton>
+        <StyledButton>클릭</StyledButton>
       </div>
     );
   }

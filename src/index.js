@@ -5,10 +5,12 @@ import { render } from 'react-dom'
 import './styles/index.scss'
 
 import App from './app/App'
+import BitFace from './utils/BitFace'
 
 render(
   <StrictMode>
-    <App />
+    {/* <App /> */}
+    <BitFace />
   </StrictMode>,
   document.getElementById('root')
 )
