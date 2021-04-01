@@ -72,7 +72,6 @@ export default class BitFace extends Component {
       input: value,
     }, () => {
       this.getRandomImg(this.state.input);
-      console.log(this.state);
     });
   };
 

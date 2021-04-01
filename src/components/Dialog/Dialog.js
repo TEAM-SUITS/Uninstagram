@@ -5,6 +5,12 @@ import useBitFaceState from 'hooks/useBitFaceState';
 import styles from './Dialog.module.scss';
 
 /* -------------------------------------------------------------------------- */
+// test 후 삭제 예정
+import { start, post } from 'styles/modules/avatar.module.scss';
+
+/* -------------------------------------------------------------------------- */
+
+// 디바이스 감지
 
 export default function Dialog({
   visible = false, // 다이얼로그 가시성 여부
@@ -38,7 +44,6 @@ export default function Dialog({
         const firstFocusNode = focusableNodeList[0];
         const lastFocusNode = focusableNodeList[focusableNodeList.length - 1];
 
-        console.log(focusableNodeList);
         // 첫 번째 포커스 요소에서 shift + tab 동시에 누르면? -> 마지막 포커스 요소로 이동!
         if (e.target === firstFocusNode && e.shiftKey && e.key === 'Tab') {
           e.preventDefault(); // ❔ default가 무엇인지??
@@ -76,7 +81,11 @@ export default function Dialog({
           <h1 className={styles['h']}>
             Start with your avatar!
           </h1>
-          <img src={bitFaceUrl} alt="임시 이미지"/>
+          <img
+            className={start}
+            src={bitFaceUrl}
+            alt="임시 이미지"
+          />
           <input
             type="text"
             value={userName}
@@ -103,6 +112,7 @@ Dialog.Modal = function DialogModal() {
   return (
     <div
       className={styles['dim']}
+      role="presentation"
     >
     </div>
   );
