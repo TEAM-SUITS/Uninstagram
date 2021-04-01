@@ -22,14 +22,16 @@ const combineNumbersInArr = arr => {
   const strArr = arr.map(number => numberToString(number));
   
   let combined = strArr.reduce((prev, curr, idx) => {
-    return idx <= 3 ? prev + curr : prev;
+    return prev + curr;
   }, '');
 
   while (combined.length < 8) {
     combined += '01';
   }
 
-  return combined;
+  const l = combined.length;
+
+  return combined.substring(l - 8, l);
 };
 
 const getFaceUrl = combinedNumbers => `http://turnyournameintoaface.com/face/${combinedNumbers}.png`;

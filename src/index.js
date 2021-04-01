@@ -9,8 +9,8 @@ import BitFace from './utils/BitFace'
 
 render(
   <StrictMode>
-    {/* <App /> */}
-    <BitFace />
+    <App />
+    {/* <BitFace /> */}
   </StrictMode>,
   document.getElementById('root')
 )

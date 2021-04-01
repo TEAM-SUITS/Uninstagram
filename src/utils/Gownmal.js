@@ -10,10 +10,10 @@ const regexpArray = [
   { reg: regexpKOR1, word: '별로' },
   { reg: regexpKOR2, word: '그냥저냥' },
   { reg: regexpKOR3, word: 'ㅡㅡ;' },
-  { reg: regexpKOR4, word: '머쓱..' },
-  { reg: regexpKOR5, word: '시험 공부' },
+  { reg: regexpKOR4, word: '엥..' },
+  { reg: regexpKOR5, word: '**' },
   { reg: regexpKOR6, word: '심심한' },
-  { reg: regexpKOR7, word: '기말고사' },
+  { reg: regexpKOR7, word: '최악' },
 ];
 
 const converter = text => {
@@ -34,4 +34,8 @@ const testStr3 = '저 오늘 남자친구랑 데이트하기로 했어요!';
 const testStr4 = '이거 진짜 귀엽지않나요 ㅎㅎ 제가 좋아하는 캐릭터에요!';
 const testStr5 = '어제 본 영화 진짜 감동적이었어용 ㅎㅎ 강추합니다!';
 
+console.log(converter(testStr1));
+console.log(converter(testStr2));
 console.log(converter(testStr3));
+console.log(converter(testStr4));
+console.log(converter(testStr5));

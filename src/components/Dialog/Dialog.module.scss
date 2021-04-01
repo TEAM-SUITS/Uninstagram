@@ -1,0 +1,37 @@
+@use 'styles/pages/config.scss' as *;
+
+.container {
+  z-index: 999;
+  background-color: $GRAY_ONE;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 305px;
+  border-radius: 10px;
+  text-align: center;
+
+  .h {
+    display: inline-block;
+    margin: 1em 0;
+    padding: 0;
+    font-size: 1em;
+  }
+
+  .button {
+    cursor: pointer;
+    display: block;
+    margin: 1em auto;
+  }
+}
+
+.dim {
+  z-index: 998;
+  background-color: $BLACK;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  opacity: .5;
+}
