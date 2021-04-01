@@ -1,5 +1,6 @@
 import React from 'react';
 import Portal from 'components/Portal/Portal';
+import useBitFaceState from 'hooks/useBitFaceState';
 
 import styles from './Dialog.module.scss';
 
@@ -10,6 +11,7 @@ export default function Dialog({
 }) {
   const dialogRef = React.useRef(null);
   const [userName, setUserName] = React.useState('');
+  const bitFaceUrl = useBitFaceState(userName);
 
   // a11y
   React.useEffect(() => {
@@ -17,7 +19,6 @@ export default function Dialog({
       const dialogNode = dialogRef.current;
       // dialogNode.setAttribute('tabIndex', 0);
       dialogNode.querySelector('input').focus();
-      console.log('hi');
       // dialogNode.focus();
 
       // 다이얼로그 뒤에 영역이 모바일 보이스리더기에 읽히지 않도록 처리
@@ -75,7 +76,7 @@ export default function Dialog({
           <h1 className={styles['h']}>
             Start with your avatar!
           </h1>
-          <img src="assets/mockimg.png" alt="임시 이미지"/>
+          <img src={bitFaceUrl} alt="임시 이미지"/>
           <input
             type="text"
             value={userName}
