@@ -9,6 +9,5 @@ export const GlobalColors = createGlobalStyle`
     --color-darkgray: #555;
     --color-black: #000;
     --color-background: #eee;
-    --color-thistle: thistle;
   }
 `;

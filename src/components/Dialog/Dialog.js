@@ -1,25 +1,34 @@
 import React from 'react';
 import Portal from 'components/Portal/Portal';
+import { Button } from 'components/Button/Button.styled';
 import useBitFaceState from 'hooks/useBitFaceState';
 
 import styles from './Dialog.module.scss';
+import { motion } from 'framer-motion';
+import styled from 'styled-components';
 
 /* -------------------------------------------------------------------------- */
 // test 후 삭제 예정
 import { start, post } from 'styles/modules/avatar.module.scss';
-
-import styled from 'styled-components';
 import { a11yHidden } from 'styles/common/common.styled';
 
-const StyledButton = styled.button.attrs(() => ({
-  type: 'button',
-}))`
-  /* ${a11yHidden} */
-  background-color: var(--color-thistle);
-  cursor: pointer;
-  display: block;
-  margin: 1em auto;
-`;
+// const StyledButton = styled.button.attrs(() => ({
+//   type: 'button',
+// }))`
+//   /* ${a11yHidden} */
+//   cursor: pointer;
+//   display: block;
+//   margin: 1em auto;
+//   width: 100px;
+//   font-weight: 700;
+//   line-height: 1.5;
+// `;
+
+const StyledButton = motion(Button);
+const buttonMotion = {
+  y: '-2px',
+  transition: { duration: 0.4, type: 'tween' },
+};
 
 /* -------------------------------------------------------------------------- */
 
@@ -106,7 +115,10 @@ export default function Dialog({
               setUserName(e.target.value);
             }}
           />
-          <StyledButton>DONE</StyledButton>
+          <StyledButton
+            whileFocus={buttonMotion}
+            whileHover={buttonMotion}
+          >DONE</StyledButton>
         </div>
       )}
       {visible ? <Dialog.Modal /> : null}
