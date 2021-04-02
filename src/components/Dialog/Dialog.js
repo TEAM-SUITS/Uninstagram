@@ -23,9 +23,9 @@ export default function Dialog({
   React.useEffect(() => {
     if (visible) {
       const dialogNode = dialogRef.current;
-      // dialogNode.setAttribute('tabIndex', 0);
+      dialogNode.setAttribute('tabIndex', -1);
       dialogNode.querySelector('input').focus();
-      // dialogNode.focus();
+      dialogNode.focus();
 
       // 다이얼로그 뒤에 영역이 모바일 보이스리더기에 읽히지 않도록 처리
       const rootNode = document.getElementById('root');
@@ -38,7 +38,7 @@ export default function Dialog({
         const focusableNodeList = dialogNode.querySelectorAll(
           'a, button, input, select, textarea'
         ); // 참고로 a 태그는 href 속성이나 tabindex 속성이 있으면 focusable함.
-
+        console.log(e.currentTarget)
         // 첫 번째 포커스 요소와 마지막 포커스 요소를 기억해놓아야
         // 다이얼로그가 닫히지 않는 한 다이얼로그 내에서 포커싱이 순환될 수 있음.
         const firstFocusNode = focusableNodeList[0];
