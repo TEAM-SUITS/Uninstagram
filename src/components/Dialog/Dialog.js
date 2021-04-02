@@ -15,6 +15,7 @@ const StyledButton = styled.button.attrs(() => ({
   type: 'button',
 }))`
   /* ${a11yHidden} */
+  background-color: var(--color-thistle);
   cursor: pointer;
   display: block;
   margin: 1em auto;

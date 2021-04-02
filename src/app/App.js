@@ -1,10 +1,12 @@
 import './App.scss'
 import logo from 'assets/logo.svg'
 import Dialog from 'components/Dialog/Dialog'
+import { GlobalColors } from 'styles/pages/theme.styled';
 
 function App() {
   return (
     <>
+      <GlobalColors />
       <Dialog visible={true} />
       <div className="App">
         <header className="App-header">
