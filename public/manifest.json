@@ -1,6 +1,6 @@
 {
-  "short_name": "E.UID",
-  "name": "이듬(E.UID) 블렌디드 러닝",
+  "short_name": "UNINSTAGRAM",
+  "name": "UNINSTAGRAM(언인스타그램)",
   "icons": [
     {
       "src": "assets/favicon.png",
@@ -20,6 +20,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#5382F6",
-  "background_color": "#ffffff"
+  "theme_color": "#000000",
+  "background_color": "#eeeeee"
 }

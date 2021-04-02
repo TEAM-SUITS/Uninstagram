@@ -8,6 +8,18 @@ import styles from './Dialog.module.scss';
 // test 후 삭제 예정
 import { start, post } from 'styles/modules/avatar.module.scss';
 
+import styled from 'styled-components';
+import { a11yHidden } from 'styles/common/common.styled';
+
+const StyledButton = styled.button.attrs(() => ({
+  type: 'button',
+}))`
+  /* ${a11yHidden} */
+  cursor: pointer;
+  display: block;
+  margin: 1em auto;
+`;
+
 /* -------------------------------------------------------------------------- */
 
 // 디바이스 감지
@@ -38,7 +50,7 @@ export default function Dialog({
         const focusableNodeList = dialogNode.querySelectorAll(
           'a, button, input, select, textarea'
         ); // 참고로 a 태그는 href 속성이나 tabindex 속성이 있으면 focusable함.
-        console.log(e.currentTarget)
+
         // 첫 번째 포커스 요소와 마지막 포커스 요소를 기억해놓아야
         // 다이얼로그가 닫히지 않는 한 다이얼로그 내에서 포커싱이 순환될 수 있음.
         const firstFocusNode = focusableNodeList[0];
@@ -93,12 +105,7 @@ export default function Dialog({
               setUserName(e.target.value);
             }}
           />
-          <button
-            type="button"
-            className={styles['button']}
-          >
-            DONE
-          </button>
+          <StyledButton>DONE</StyledButton>
         </div>
       )}
       {visible ? <Dialog.Modal /> : null}
