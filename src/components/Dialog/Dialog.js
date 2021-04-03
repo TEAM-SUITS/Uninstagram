@@ -37,16 +37,13 @@ const Modal = styled.div.attrs(() => ({
 }))`
   z-index: 998;
   background-color: var(--color-black);
-  position: absolute;
+  position: fixed;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
-  opacity: .5;
-  -webkit-filter: blur(5px) grayscale(90%);
-  filter: blur(5px) grayscale(90%);
-  -webkit-backdrop-filter: blur(2em);
-  backdrop-filter: blur(2em);
+  opacity: .8;
+  /* backdrop-filter: blur(20px) opacity(80%); */
 `;
 
 /* -------------------------------------------------------------------------- */
@@ -69,6 +66,7 @@ export default function Dialog({
       // 다이얼로그 뒤에 영역이 모바일 보이스리더기에 읽히지 않도록 처리
       const rootNode = document.getElementById('root');
       rootNode.setAttribute('aria-hidden', true);
+      rootNode.style.userSelect = 'none';
 
       const handleFocusTrap = e => {
         // 다이얼로그 노드
@@ -103,19 +101,20 @@ export default function Dialog({
         dialogNode.removeAttribute('tabIndex');
         rootNode.removeAttribute('aria-hidden');
         window.removeEventListener('keydown', handleFocusTrap);
+        rootNode.style.userSelect = 'auto';
       }
     }
   }, [visible]);
 
   return (
     <Portal id={'dialog-container'}>
+      {visible ? <Modal /> : null}
       {visible && (
         <DialogContainer ref={dialogRef}>
           <Header>{infoText}</Header>
           {children}
         </DialogContainer>
       )}
-      {visible ? <Modal /> : null}
     </Portal>
   );
 }

@@ -10,6 +10,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color: #000;
   background-color: #FAFAFA;
+  padding-bottom: 80px;
 }
 
 body,
@@ -46,4 +47,8 @@ abbr[title] {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+a {
+  text-decoration: none;
 }
