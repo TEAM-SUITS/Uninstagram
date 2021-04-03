@@ -39,6 +39,8 @@ const ProfileImage = styled.div`
     height: 180px;
     margin: 1em auto;
     border-radius: 10px;
+    box-shadow: 3px 3px 0 var(--color-black);
+    /* box-shadow: 0 5px 24px 5px rgba(0, 0, 0, .15); */
   }
 
   @media screen and (max-width: 480px) {

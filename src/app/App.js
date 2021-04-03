@@ -5,7 +5,7 @@ import { GlobalColors } from 'styles/pages/theme.styled';
 import Spinner from 'components/Spinner/Spinner.styled';
 import SignInDialog from 'containers/SignInDialog';
 
-import Profile from 'components/PostcardProfile/PostcardProfile.styled';
+import { Postcard } from 'containers/Postcard';
 
 function App() {
   const [isLoading, setIsLoading] = React.useState(true);
@@ -24,10 +24,7 @@ function App() {
     <>
       <GlobalColors />
       {/* <SignInDialog visible={!loginStatus} /> */}
-      <Profile
-        imgUrl='http://turnyournameintoaface.com/face/01010101.png'
-        userName='안예인짱짱맨'
-      />
+      <Postcard content="Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source."></Postcard>
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
