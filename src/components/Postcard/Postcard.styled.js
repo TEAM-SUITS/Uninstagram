@@ -22,13 +22,13 @@ export const StyledPostcard = styled.div`
 
     .bubble {
       background-color: var(--color-background);
-      min-height: 80px;
-      max-height: 100px;
+      min-height: 4.5em;
+      max-height: 9em;
       border-radius: 20px;
-      overflow-y: auto;
+      /* overflow-y: auto; */
 
       p {
-        padding: 0 .7em;
+        padding: 1em 1em;
       }
     }
 

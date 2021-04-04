@@ -22,7 +22,7 @@ const FlexContainer = styled.div`
   }
   
   @media screen and (max-width: 944px) {
-    display: block;
+    /* display: block; */
     width: 80vw;
   }
 
