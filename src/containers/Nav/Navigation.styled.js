@@ -13,7 +13,8 @@ const Link = ({ children, to, ...restProps }) => {
 };
 
 export const Navbar = styled.nav`
-  position: absolute;
+  z-index: 990;
+  position: fixed;
   left: 0;
   right: 0;
   top: 0;
@@ -53,6 +54,7 @@ Navbar.ItemLink = styled(Link).attrs({
 `;
 
 MobileNavbar.Items = styled(Navbar.Items)`
+  z-index: 990;
   position: fixed;
   bottom: 0;
   width: 100vw;

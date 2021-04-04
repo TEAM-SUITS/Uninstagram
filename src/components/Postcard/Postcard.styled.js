@@ -13,8 +13,6 @@ export const StyledPostcard = styled.div`
   
   @media screen and (min-width: 480px) {
     width: 100%;
-    /* max-width: 400px; */
-    margin: 2em;
 
     .contents {
       position: relative;
@@ -28,7 +26,7 @@ export const StyledPostcard = styled.div`
       /* overflow-y: auto; */
 
       p {
-        padding: 1em 1em;
+        padding: 1em;
       }
     }
 
