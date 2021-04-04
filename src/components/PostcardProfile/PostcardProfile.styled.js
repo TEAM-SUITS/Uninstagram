@@ -57,7 +57,6 @@ export default function Profile({
   imgUrl = 'http://turnyournameintoaface.com/face/01010101.png',
   userName = '',
 }) {
-  console.log(userName)
   return (
     <ProfileBox>
       <ProfileImage imgUrl={imgUrl} />
