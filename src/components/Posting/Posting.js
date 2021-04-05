@@ -1,7 +1,10 @@
-import React from 'react';
-import styled from 'styled-components';
-import MenuContainer from '../MenuContainer/MenuContainer';
-import { boxShadow } from '../../styles/common/common.styled';
+import React from "react";
+import styled from "styled-components";
+import MenuContainer from "../MenuContainer/MenuContainer";
+import { boxShadow } from "../../styles/common/common.styled";
+import useDatabase from "hooks/useDatabase";
+import { useSelector } from "react-redux";
+import { selectCurrentUser } from "redux/storage/currentUser/currentUser";
 
 const StyledPosting = styled.div`
   display: flex;
@@ -69,30 +72,36 @@ const StyledButton = styled.button`
 `;
 
 const Posting = ({ handleClick }) => {
-  const [text, setText] = React.useState('');
+  const [content, setContent] = React.useState("");
+  const { userName, avatar } = useSelector((state) => {
+    return selectCurrentUser(state);
+  });
+
+  const { submitPost } = useDatabase("posts");
 
   const handleChange = (e) => {
-    setText(e.target.value);
+    setContent(e.target.value);
 
     if (e.target.value.length > 100) {
-      setText(text.slice(0, 99));
+      setContent(content.slice(0, 99));
     }
   };
 
   const handleSubmit = () => {
-    console.log(text);
+    const post = { userName, avatar, content };
+    submitPost(post);
   };
 
   return (
     <MenuContainer heading="작성 전 유의사항">
       <StyledPosting>
-        <textarea onChange={handleChange} value={text} />
-        <span>{`${text.length} / 100`}</span>
+        <textarea onChange={handleChange} value={content} />
+        <span>{`${content.length} / 100`}</span>
       </StyledPosting>
       <ButtonContainer>
         <StyledButton
           onClick={() => {
-            setText('');
+            setContent("");
             handleClick();
           }}
         >
@@ -102,7 +111,7 @@ const Posting = ({ handleClick }) => {
           onClick={() => {
             // send to database
             handleSubmit();
-            setText('');
+            setContent("");
             handleClick();
           }}
         >
