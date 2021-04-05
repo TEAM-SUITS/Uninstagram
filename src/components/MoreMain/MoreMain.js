@@ -53,7 +53,11 @@ const LineThrough = styled.span`
 
 const MoreMain = ({ handler }) => {
   return (
-    <MenuContainer heading="비뚤어질 대로 비뚤어진 세상" handler={handler}>
+    <MenuContainer
+      type="normal"
+      heading="비뚤어질 대로 비뚤어진 세상"
+      handler={handler}
+    >
       <Div>
         <SmallerSpan>꾹 참고 있던 말들을</SmallerSpan>
         <Span>마음껏 표현해보세요.</Span>
