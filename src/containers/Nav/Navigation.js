@@ -11,7 +11,7 @@ const Navigation = () => {
   return (
     <Navbar center={isMobile}>
       <Navbar.Logo>Uninstagram</Navbar.Logo>
-      <Navbar.Items isMobile={isMobile}>
+      <Navbar.Items ismobile={isMobile}>
         <Navbar.ItemLink exact to="/">
           <Icon type={pathname === "/" ? "home-active" : "home"} />
         </Navbar.ItemLink>

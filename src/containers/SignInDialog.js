@@ -1,4 +1,7 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectCurrentUser } from 'redux/storage/currentUser/currentUser';
+import { addCurrentUser } from 'redux/storage/currentUser/currentUser';
 import useBitFaceState from 'hooks/useBitFaceState';
 import Dialog from 'components/Dialog/Dialog';
 import { MotionButton } from 'components/Button/Button.styled';
@@ -12,11 +15,26 @@ export default function SignInDialog({
   visible = false, // 다이얼로그 가시성 여부
 }) {
   
-  const [userName, setUserName] = React.useState('');
-  bitFaceUrl = useBitFaceState(userName);
+  const { userName, avatar } = useSelector(
+    state => selectCurrentUser(state)
+  );
+  const dispatch = useDispatch();
+
+  const [nickName, setNickName] = React.useState('');
+  bitFaceUrl = useBitFaceState(nickName);
   const handleInput = e => {
-    setUserName(e.target.value);
-  }
+    setNickName(e.target.value);
+  };
+
+  const userData = {
+    userName: nickName,
+    avatar: bitFaceUrl
+  };
+
+  const addUserName = () => {
+    dispatch(addCurrentUser(userData));
+    console.log(userData);
+  };
 
   return (
     <Dialog visible={visible} infoText="Start with your avatar!">
@@ -24,11 +42,11 @@ export default function SignInDialog({
         // initValue=""
         id="dialogInput"
         label="프로필 설정"
-        userName={userName}
+        userName={nickName}
         avatarUrl={bitFaceUrl}
         handleInput={handleInput}
       />
-      <MotionButton>DONE</MotionButton>
+      <MotionButton onClick={addUserName}>DONE</MotionButton>
     </Dialog>
   );
 }

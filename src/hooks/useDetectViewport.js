@@ -2,7 +2,6 @@ import React from 'react'
 
 export const initialViewports = {
   sm: 480,
-  md: 768,
   lg: 1024,
 }
 
@@ -27,7 +26,7 @@ const updateAction = (newState) => ({
 /* -------------------------------------------------------------------------- */
 
 export default function useDetectViewport(viewports = initialViewports) {
-  const { sm, md, lg } = viewports
+  const { sm, lg } = viewports
   const [state, dispatch] = React.useReducer(reducer, initialState)
 
   React.useEffect(() => {
@@ -46,21 +45,7 @@ export default function useDetectViewport(viewports = initialViewports) {
           isDesktop: false,
         })
       }
-      if (vw >= sm && vw < md) {
-        updateState({
-          type: 'sm',
-          isMobile: true,
-          isDesktop: false,
-        })
-      }
-      if (vw >= md && vw < lg) {
-        updateState({
-          type: 'md',
-          isMobile: false,
-          isDesktop: true,
-        })
-      }
-      if (vw >= lg) {
+      if (vw >= sm) {
         updateState({
           type: 'lg',
           isMobile: false,
@@ -76,7 +61,7 @@ export default function useDetectViewport(viewports = initialViewports) {
     return () => {
       window.removeEventListener('resize', detectionViewport)
     }
-  }, [dispatch, lg, md, sm])
+  }, [dispatch, lg, sm])
 
   return state
 }

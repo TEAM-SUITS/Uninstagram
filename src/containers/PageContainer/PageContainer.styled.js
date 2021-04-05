@@ -11,8 +11,8 @@ const PageContainer = styled(motion(Container))`
     flex-flow: column wrap;
     align-items: center;
     margin: ${({ margin }) => (margin ? margin : '20px')};
-    ${({ isMobile }) =>
-        isMobile &&
+    ${({ ismobile }) =>
+        ismobile &&
         css`
             margin: 0;
             width: 100%;

@@ -4,7 +4,6 @@ import HomeLogoLink from 'containers/Header/HomeLogoLink';
 import Navigation from 'containers/Nav/Navigation';
 import { GlobalColors } from 'styles/pages/theme.styled';
 import Spinner from 'components/Spinner/Spinner.styled';
-import SignInDialog from 'containers/SignInDialog';
 
 import {
   HomePage,

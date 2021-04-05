@@ -1,3 +1,12 @@
+import { createSelector } from 'reselect';
+
+/* reselect---------------------------------------------------------------- */
+const selectPostState = state => state.post;
+export const selectPost = createSelector(
+  [selectPostState],
+  post => post
+);
+
 /* action types------------------------------------------------------------------ */
 const READ_ALL_POSTS = '모든 포스트 조회';
 const ADD_POST = '포스트 추가';
@@ -10,12 +19,12 @@ export const readAllPosts = () => ({
 
 export const addPost = postData => ({
   type: ADD_POST,
-  postData,
+  info: postData,
 });
 
 export const deletePost = postData => ({
   type: DELETE_POST,
-  postData,
+  info: postData,
 });
 
 /* initial state + reducer----------------------------------------------------- */
