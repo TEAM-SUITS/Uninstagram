@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import MenuContainer from '../MenuContainer/MenuContainer';
+import { boxShadow } from '../../styles/common/common.styled';
 
 const Div = styled.div`
   margin-bottom: 30px;
@@ -46,6 +47,7 @@ const StyledButton = styled.button`
   border-radius: 5px;
   border: 0;
   background-color: gray;
+  ${boxShadow}
   &:focus {
     outline: none;
   }

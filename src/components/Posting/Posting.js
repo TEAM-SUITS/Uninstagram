@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import MenuContainer from '../MenuContainer/MenuContainer';
+import { boxShadow } from '../../styles/common/common.styled';
 
 const StyledPosting = styled.div`
   display: flex;
@@ -54,6 +55,7 @@ const StyledButton = styled.button`
   border-radius: 5px;
   border: 0;
   background-color: gray;
+  ${boxShadow}
   &:focus {
     outline: none;
   }
@@ -75,6 +77,10 @@ const Posting = ({ handleClick }) => {
     }
   };
 
+  const handleSubmit = () => {
+    console.log(text);
+  };
+
   return (
     <MenuContainer heading="작성 전 유의사항">
       <StyledPosting>
@@ -93,6 +99,7 @@ const Posting = ({ handleClick }) => {
         <StyledButton
           onClick={() => {
             // send to database
+            handleSubmit();
             setText('');
             handleClick();
           }}
