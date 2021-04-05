@@ -1,5 +1,5 @@
 export { default as HomePage } from "./HomePage/HomePage";
-export { default as MorePage } from "./InfoPage/InfoPage";
+export { default as MorePage } from "./MorePage/MorePage";
 export { default as PostPage } from "./PostPage/PostPage";
 export { default as ProfilePage } from "./ProfilePage/ProfilePage";
 export { default as SearchPage } from "./SearchPage/SearchPage";
