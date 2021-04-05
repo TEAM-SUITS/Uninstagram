@@ -1,11 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
-import HomeLogoLink from 'containers/Header/HomeLogoLink';
-import Navigation from 'containers/Nav/Navigation';
-
-import AvatarSettingBox from 'containers/AvatarSettingBox/AvatarSettingBox';
-import { MotionButton } from 'components/Button/Button.styled';
+import AvatarSettingBox from "containers/AvatarSettingBox/AvatarSettingBox";
+import { MotionButton } from "components/Button/Button.styled";
 
 /* -------------------------------------------------------------------------- */
 
@@ -29,18 +26,15 @@ const ProfileContainer = styled.div`
 /* -------------------------------------------------------------------------- */
 
 export default function ProfilePage() {
-  const [userName, setUserName] = React.useState('안예인');
+  const [userName, setUserName] = React.useState("안예인");
 
   return (
     <>
-      <HomeLogoLink />
-      <Navigation />
-
       <ProfileContainer>
         <h1>프로필 조회 · 수정</h1>
         <AvatarSettingBox initValue={userName} id="profileInput" />
         <MotionButton>DONE</MotionButton>
       </ProfileContainer>
     </>
-  )
+  );
 }

@@ -1,7 +1,6 @@
-import { bool, number, oneOfType, string, func } from "prop-types";
+import useDetectViewport from "hooks/useDetectViewport";
+import { bool, number, oneOfType, string } from "prop-types";
 import { StyledInput } from "./Input.styled";
-
-/* -------------------------------------------------------------------------- */
 
 const Input = ({
   id,
@@ -18,13 +17,9 @@ const Input = ({
   center,
   ...restProps
 }) => {
-  const customStyle = {
-    ...style,
-    height,
-    width,
-  };
+  const { isMobile } = useDetectViewport();
   return (
-    <StyledInput.Wrap style={customStyle}>
+    <StyledInput.Wrap isMobile={isMobile} height={height} width={width}>
       <StyledInput.Label htmlFor={id}>{label}</StyledInput.Label>
       <StyledInput.IconWrap>
         <StyledInput
@@ -36,7 +31,7 @@ const Input = ({
           value={value}
           {...restProps}
         />
-​
+
         {icon && (
           <StyledInput.Icon height={height - 20} type={icon} alt={label} />
         )}

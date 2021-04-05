@@ -1,14 +1,7 @@
-import React from 'react';
-import HomeLogoLink from 'containers/Header/HomeLogoLink';
-import Navigation from 'containers/Nav/Navigation';
+import React from "react";
 
 /* -------------------------------------------------------------------------- */
 
 export default function PageNotFound() {
-  return (
-    <>
-      <HomeLogoLink />
-      <Navigation />
-    </>
-  )
+  return <></>;
 }
