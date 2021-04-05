@@ -68,46 +68,16 @@ const StyledButton = styled.button`
   }
 `;
 
-const Posting = ({ handleClick }) => {
-  const [text, setText] = React.useState('');
-
-  const handleChange = (e) => {
-    setText(e.target.value);
-
-    if (e.target.value.length > 100) {
-      setText(text.slice(0, 99));
-    }
-  };
-
-  const handleSubmit = () => {
-    console.log(text);
-  };
-
+const Posting = ({ content, handleCancel, handleChange, handleSubmit }) => {
   return (
     <MenuContainer heading="작성 전 유의사항">
       <StyledPosting>
-        <textarea onChange={handleChange} value={text} />
-        <span>{`${text.length} / 100`}</span>
+        <textarea onChange={handleChange} value={content} />
+        <span>{`${content.length} / 100`}</span>
       </StyledPosting>
       <ButtonContainer>
-        <StyledButton
-          onClick={() => {
-            setText('');
-            handleClick();
-          }}
-        >
-          Cancel
-        </StyledButton>
-        <StyledButton
-          onClick={() => {
-            // send to database
-            handleSubmit();
-            setText('');
-            handleClick();
-          }}
-        >
-          Post
-        </StyledButton>
+        <StyledButton onClick={handleCancel}>Cancel</StyledButton>
+        <StyledButton onClick={handleSubmit}>Post</StyledButton>
       </ButtonContainer>
     </MenuContainer>
   );
