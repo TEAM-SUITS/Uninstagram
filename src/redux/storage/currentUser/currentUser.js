@@ -19,12 +19,12 @@ export const readCurrentUser = () => ({
 
 export const addCurrentUser = userData => ({
   type: ADD_CURRENT_USER,
-  userData,
+  data: userData,
 });
 
 export const editCurrentUser = newUserData => ({
   type: EDIT_CURRENT_USER,
-  newUserData,
+  data: newUserData,
 });
 
 /* initial state + reducer----------------------------------------------------- */
@@ -42,7 +42,7 @@ export const currentUserReducer = (state = initialState, { type, data }) => {
       console.log(data);
       return {
         ...state,
-        data,
+        ...data
       };
       // data = { userName, avatar }
 

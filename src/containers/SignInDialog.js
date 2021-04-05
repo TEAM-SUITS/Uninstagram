@@ -26,13 +26,14 @@ export default function SignInDialog({
     setNickName(e.target.value);
   };
 
-  const addUserName = () => {
-    dispatch(addCurrentUser({
-      userName: nickName,
-      avatar: bitFaceUrl
-    }));
+  const userData = {
+    userName: nickName,
+    avatar: bitFaceUrl
+  };
 
-    console.log(userName, avatar);
+  const addUserName = () => {
+    dispatch(addCurrentUser(userData));
+    console.log(userData);
   };
 
   return (

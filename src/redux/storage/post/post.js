@@ -19,12 +19,12 @@ export const readAllPosts = () => ({
 
 export const addPost = postData => ({
   type: ADD_POST,
-  postData,
+  info: postData,
 });
 
 export const deletePost = postData => ({
   type: DELETE_POST,
-  postData,
+  info: postData,
 });
 
 /* initial state + reducer----------------------------------------------------- */
