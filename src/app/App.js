@@ -1,19 +1,19 @@
-import React from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
-import HomeLogoLink from "containers/Header/HomeLogoLink";
-import Navigation from "containers/Nav/Navigation";
-import { GlobalColors } from "styles/pages/theme.styled";
-import Spinner from "components/Spinner/Spinner.styled";
-import SignInDialog from "containers/SignInDialog";
+import React from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom';
+import HomeLogoLink from 'containers/Header/HomeLogoLink';
+import Navigation from 'containers/Nav/Navigation';
+import { GlobalColors } from 'styles/pages/theme.styled';
+import Spinner from 'components/Spinner/Spinner.styled';
+import SignInDialog from 'containers/SignInDialog';
 
 import {
   HomePage,
-  MorePage,
+  InfoPage,
   PostPage,
   ProfilePage,
   SearchPage,
   PageNotFound,
-} from "pages/Pages";
+} from 'pages/Pages';
 
 /* -------------------------------------------------------------------------- */
 
@@ -40,7 +40,7 @@ function App() {
         <Route path="/search" component={SearchPage} />
         <Route path="/post" component={PostPage} />
         <Route path="/profile" component={ProfilePage} />
-        <Route path="/info" component={MorePage} />
+        <Route path="/info" component={InfoPage} />
         <Route path="/page-not-found" component={PageNotFound} />
         <Redirect to="/page-not-found" />
       </Switch>
