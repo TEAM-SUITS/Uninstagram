@@ -1,8 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import HomeLogoLink from 'containers/Header/HomeLogoLink';
-import Navigation from 'containers/Nav/Navigation';
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 /* -------------------------------------------------------------------------- */
 
@@ -31,13 +28,13 @@ const Container = styled.div`
 export default function PageNotFound() {
   return (
     <>
-      <HomeLogoLink />
-      <Navigation />
       <Container>
         <img src="assets/notFound.png" alt="page not found" />
         <p>찾는 페이지가 없습니다.</p>
-        <Link to="/"><p>메인으로 돌아가기</p></Link>
+        <Link to="/">
+          <p>메인으로 돌아가기</p>
+        </Link>
       </Container>
     </>
-  )
+  );
 }

@@ -1,17 +1,13 @@
-import React from 'react';
-import styled from 'styled-components';
-
-import HomeLogoLink from 'containers/Header/HomeLogoLink';
-import Navigation from 'containers/Nav/Navigation';
-
-import { Postcard } from 'containers/Postcard';
-import SignInDialog from 'containers/SignInDialog';
+import React from "react";
+import styled from "styled-components";
+import { Postcard } from "containers/Postcard";
+import SignInDialog from "containers/SignInDialog";
 
 /* -------------------------------------------------------------------------- */
 
 const FlexContainer = styled.div`
   margin: 0 auto;
-  
+
   @media screen and (min-width: 944px) {
     display: flex;
     flex-direction: row;
@@ -20,7 +16,7 @@ const FlexContainer = styled.div`
     align-content: flex-start;
     width: 960px;
   }
-  
+
   @media screen and (max-width: 944px) {
     /* display: block; */
     width: 80vw;
@@ -36,9 +32,6 @@ const FlexContainer = styled.div`
 export default function HomePage() {
   return (
     <>
-      <HomeLogoLink />
-      <Navigation />
-
       <SignInDialog visible={false} />
 
       <FlexContainer>
@@ -49,5 +42,5 @@ export default function HomePage() {
         <Postcard content="컬렉션 및 문서를 사용하여 데이터를 쉽게 구조화할 수 있습니다." />
       </FlexContainer>
     </>
-  )
+  );
 }

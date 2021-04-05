@@ -1,7 +1,6 @@
 import Icon from "components/Icon/Icon";
-import styled from "styled-components";
-
-/* -------------------------------------------------------------------------- */
+import styled, { css } from "styled-components";
+import { a11yHidden } from "styles/common/common.styled";
 
 export const StyledInput = styled.input`
   flex: 1;
@@ -26,17 +25,18 @@ StyledInput.Wrap = styled.div`
   border-radius: 5px;
   align-items: center;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+  height: ${({ height }) => (height ? height + "px" : "30px")};
+  width: ${({ width }) => (width ? width + "px" : "200px")};
+
+  ${({ isMobile }) =>
+    isMobile &&
+    css`
+      width: 100%;
+    `}
 `;
 
 StyledInput.Label = styled.label`
-  overflow: hidden;
-  position: absolute;
-  clip: rect(0 0 0 0);
-  clip-path: polygon(0 0, 0 0, 0 0);
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  white-space: nowrap;
+  ${a11yHidden}
 `;
 
 StyledInput.IconWrap = styled.div`
