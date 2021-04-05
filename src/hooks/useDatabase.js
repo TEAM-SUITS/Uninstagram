@@ -6,25 +6,6 @@ export default function useGetPosts(collectionName) {
   const [posts, setPosts] = useState();
   const postsRef = db.collection(collectionName);
 
-  const getAllPosts = () => {
-    setLoading(true);
-    const unsubscribe = postsRef
-      .orderBy("createdAt", "desc")
-      .onSnapshot((querySnapshot) => {
-        const _posts = [];
-        querySnapshot.forEach((doc) => {
-          _posts.push({
-            id: doc.id,
-            ...doc.data(),
-          });
-        });
-        setPosts(_posts);
-        setLoading(false);
-      });
-
-    return () => unsubscribe();
-  };
-
   const findPost = (query) => {
     //https://stackoverflow.com/a/56815787/13307617 partial
     postsRef
@@ -42,16 +23,31 @@ export default function useGetPosts(collectionName) {
 
   const submitPost = async (post) => {
     const date = new Date();
-    await db.collection(collectionName).add({
+    await postsRef.add({
       createdAt: date.toUTCString(),
       content: post.content,
-      userName: post.userName,
-      avatar: post.avatar,
+      user: post.userName,
+      avatarUrl: post.avatar,
     });
   };
 
   useEffect(() => {
-    getAllPosts();
+    setLoading(true);
+    const unsubscribe = postsRef
+      .orderBy("createdAt", "asc")
+      .onSnapshot((querySnapshot) => {
+        const _posts = [];
+        querySnapshot.forEach((doc) => {
+          _posts.push({
+            id: doc.id,
+            ...doc.data(),
+          });
+        });
+        setPosts(_posts);
+        setLoading(false);
+      });
+
+    return () => unsubscribe();
   }, []);
 
   return { posts, loading, findPost, submitPost };
