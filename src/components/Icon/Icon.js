@@ -1,5 +1,5 @@
 import React from "react";
-import { string, oneOf } from "prop-types";
+import { oneOf } from "prop-types";
 import { ReactComponent as Search } from "./images/search.svg";
 import { ReactComponent as SearchActive } from "./images/search-active.svg";
 import { ReactComponent as Home } from "./images/home.svg";

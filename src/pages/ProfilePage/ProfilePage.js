@@ -1,11 +1,9 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
-import HomeLogoLink from 'containers/Header/HomeLogoLink';
-import Navigation from 'containers/Nav/Navigation';
+import AvatarSettingBox from "containers/AvatarSettingBox/AvatarSettingBox";
+import { MotionButton } from "components/Button/Button.styled";
 
-import AvatarSettingBox from 'containers/AvatarSettingBox/AvatarSettingBox';
-import { MotionButton } from 'components/Button/Button.styled';
 import useBitFaceState from 'hooks/useBitFaceState';
 
 /* -------------------------------------------------------------------------- */
@@ -40,9 +38,6 @@ export default function ProfilePage() {
 
   return (
     <>
-      <HomeLogoLink />
-      <Navigation />
-
       <ProfileContainer>
         <h1>프로필 조회 · 수정</h1>
         <AvatarSettingBox
@@ -56,5 +51,5 @@ export default function ProfilePage() {
         <MotionButton>DONE</MotionButton>
       </ProfileContainer>
     </>
-  )
+  );
 }

@@ -2,6 +2,6 @@ import React from "react";
 
 /* -------------------------------------------------------------------------- */
 
-export default function PostPage() {
+export default function MorePage() {
   return <></>;
 }
