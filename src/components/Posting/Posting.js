@@ -26,6 +26,7 @@ const StyledPosting = styled.div`
     @media screen and (min-width: 480px) {
       height: 20rem;
       font-size: 1.5rem;
+      padding: 16px;
     }
   }
   span {
