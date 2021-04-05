@@ -3,7 +3,7 @@ import { boxShadow } from '../../styles/common/common.styled';
 
 const StyledMenuContainer = styled.div`
   width: 305px;
-
+  height: 350px;
   background-color: var(--color-lightgray);
   border-radius: 10px;
   display: flex;
@@ -16,6 +16,7 @@ const StyledMenuContainer = styled.div`
   @media screen and (min-width: 480px) {
     width: 610px;
     padding-bottom: 80px;
+    height: 600px;
   }
 `;
 
