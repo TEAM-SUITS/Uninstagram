@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import AboutUs from 'components/AboutUs/AboutUs';
 import HowToUse from 'components/HowToUse/HowToUse';
 import MoreMain from 'components/MoreMain/MoreMain';
+import PageContainer from "containers/PageContainer/PageContainer.styled";
+import { pageEffect } from "styles/motions/variants";
 
 /* -------------------------------------------------------------------------- */
 
@@ -44,8 +46,8 @@ export default function MorePage() {
   }
 
   return (
-    <>
+    <PageContainer variants={pageEffect} initial="hidden" animate="visible">
       <StyledMorePageContainer>{comp}</StyledMorePageContainer>
-    </>
+    </PageContainer>
   );
 }
