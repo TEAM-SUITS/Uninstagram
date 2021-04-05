@@ -15,7 +15,7 @@ const StyledPosting = styled.div`
   textarea {
     width: 100%;
     height: 12rem;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     outline: none;
     border-radius: 10px;
     box-shadow: 0 2px 2px #00000025;
@@ -25,16 +25,18 @@ const StyledPosting = styled.div`
 
     @media screen and (min-width: 480px) {
       height: 20rem;
-      font-size: 1.8rem;
+      font-size: 1.5rem;
+      padding: 16px;
     }
   }
   span {
     position: absolute;
-    bottom: 10px;
-    right: 20px;
+    bottom: 5px;
+    right: 10px;
     color: #555;
     @media screen and (min-width: 480px) {
-      right: 30px;
+      bottom: 10px;
+      right: 15px;
     }
   }
 `;
