@@ -38,8 +38,8 @@ Navbar.Items = styled.ul`
   display: flex;
   list-style: none;
   align-items: center;
-  ${({ isMobile }) =>
-    isMobile &&
+  ${({ ismobile }) =>
+    ismobile &&
     css`
       position: fixed;
       bottom: 0;

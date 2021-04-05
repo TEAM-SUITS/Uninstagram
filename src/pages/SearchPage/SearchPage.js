@@ -14,7 +14,7 @@ export default function SearchPage() {
       variants={pageEffect}
       initial="hidden"
       animate="visible"
-      isMobile={isMobile}
+      ismobile={'' + isMobile}
     >
       <Input
         id="postSearch"
