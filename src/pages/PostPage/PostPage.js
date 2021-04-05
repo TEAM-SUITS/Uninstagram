@@ -21,7 +21,8 @@ const StyledPostPage = styled.div`
 
 export default function PostPage({ history }) {
   const [isWriting, setIsWriting] = useState(false);
-  const [content, setContent] = React.useState('');
+  const [content, setContent] = useState('');
+
   const { submitPost } = useDatabase('posts');
   const { userName, avatar } = useSelector((state) => {
     return selectCurrentUser(state);
