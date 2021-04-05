@@ -1,6 +1,7 @@
-import HomeLogoLink from 'containers/Header/HomeLogoLink';
-import styled from "styled-components";
+import HomeLogoLink from "containers/Header/HomeLogoLink";
+import styled, { css } from "styled-components";
 import { NavLink } from "react-router-dom";
+import { resetBoxModel } from "styles/common/common.styled";
 
 const Link = ({ children, to, ...restProps }) => {
   return (
@@ -37,20 +38,25 @@ Navbar.Items = styled.ul`
   display: flex;
   list-style: none;
   align-items: center;
-  background-color: #fff;
-  z-index: 100;
+  ${({ isMobile }) =>
+    isMobile &&
+    css`
+      position: fixed;
+      bottom: 0;
+      width: 100vw;
+      flex: 1;
+      padding: 25px 15px;
+      justify-content: space-around;
+      height: 45px;
+      border-top: 1px solid var(--color-gray);
+      margin: 0;
+      background-color: #fff;
+    `}
 `;
 
-const activeClassName = "activeNav";
-
-Navbar.ItemLink = styled(Link).attrs({
-  activeClassName,
-})`
-  height: 100%;
+Navbar.ItemLink = styled(Link)`
+  ${resetBoxModel}
   padding: 10px 15px;
-  &.${activeClassName} {
-    background: var(--color-gray);
-  }
 `;
 
 MobileNavbar.Items = styled(Navbar.Items)`
