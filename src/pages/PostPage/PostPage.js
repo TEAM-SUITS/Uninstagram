@@ -45,18 +45,24 @@ export default function PostPage() {
   };
 
   return (
-    <StyledPostPage>
-      {isWriting ? (
-        <Posting
-          content={content}
-          handleCancel={handleCancel}
-          handleChange={handleChange}
-          handleSubmit={handleSubmit}
-        />
-      ) : (
-        <PostMain handleClick={() => setIsWriting(!isWriting)} />
-      )}
-    </StyledPostPage>
+    <>
+      <Prompt
+        when={content !== ''}
+        message="기껏 쳐놓고 나갈려고요ㅇㅅㅇ?"
+      />
+      <StyledPostPage>
+        {isWriting ? (
+          <Posting
+            content={content}
+            handleCancel={handleCancel}
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+          />
+        ) : (
+          <PostMain handleClick={() => setIsWriting(!isWriting)} />
+        )}
+      </StyledPostPage>
+    </>
     // <PageContainer
     //   variants={pageEffect}
     //   initial="hidden"

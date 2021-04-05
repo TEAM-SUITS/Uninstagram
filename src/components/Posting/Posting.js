@@ -1,7 +1,9 @@
-import React from "react";
-import styled from "styled-components";
-import MenuContainer from "../MenuContainer/MenuContainer";
-import { boxShadow } from "../../styles/common/common.styled";
+import React from 'react';
+import styled from 'styled-components';
+import MenuContainer from '../MenuContainer/MenuContainer';
+import { boxShadow } from '../../styles/common/common.styled';
+import { useSelector } from 'react-redux';
+import { selectCurrentUser } from 'redux/storage/currentUser/currentUser';
 
 const StyledPosting = styled.div`
   display: flex;
@@ -52,14 +54,22 @@ const ButtonContainer = styled.div`
 
 const StyledButton = styled.button`
   width: 80px;
-  padding: 5px 0;
+  height: 42px;
   font-size: 1rem;
   border-radius: 5px;
   border: 0;
-  background-color: gray;
-  ${boxShadow}
-  &:focus {
+  background-color: var(--color-darkgray);
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  l ${boxShadow} &:focus {
     outline: none;
+  }
+  &:disabled {
+    background-color: #aaa;
+    border: 2px solid var(--color-darkgray);
+    cursor: not-allowed;
   }
   @media screen and (min-width: 480px) {
     width: 100px;
@@ -69,15 +79,19 @@ const StyledButton = styled.button`
 `;
 
 const Posting = ({ content, handleCancel, handleChange, handleSubmit }) => {
+  const { userName } = useSelector((state) => selectCurrentUser(state));
+
   return (
-    <MenuContainer heading="작성 전 유의사항">
+    <MenuContainer heading={`${userName} 하고 싶은 말 다 해.`}>
       <StyledPosting>
         <textarea onChange={handleChange} value={content} />
         <span>{`${content.length} / 100`}</span>
       </StyledPosting>
       <ButtonContainer>
         <StyledButton onClick={handleCancel}>Cancel</StyledButton>
-        <StyledButton onClick={handleSubmit}>Post</StyledButton>
+        <StyledButton onClick={handleSubmit} disabled={!content.length}>
+          Post
+        </StyledButton>
       </ButtonContainer>
     </MenuContainer>
   );
