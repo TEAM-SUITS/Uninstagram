@@ -6,6 +6,7 @@ import Posting from "components/Posting/Posting";
 import useDatabase from "hooks/useDatabase";
 import { useSelector } from "react-redux";
 import { selectCurrentUser } from "redux/storage/currentUser/currentUser";
+import gownmalConverter from 'utils/Gownmal';
 
 /* -------------------------------------------------------------------------- */
 const StyledPostPage = styled.div`
@@ -37,11 +38,10 @@ export default function PostPage() {
   };
 
   const handleSubmit = () => {
-    console.log(content);
-    setContent("");
     setIsWriting(!isWriting);
-    const post = { userName, avatar, content };
+    const post = { userName, avatar, content: gownmalConverter(content) };
     submitPost(post);
+    setContent("");
   };
 
   return (
