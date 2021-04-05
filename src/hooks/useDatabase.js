@@ -1,24 +1,19 @@
 import db from "../api/firebase";
 import { useEffect, useState } from "react";
 
-export default function useGetPosts(collectionName) {
+export default function useDatabase(collectionName) {
   const [loading, setLoading] = useState(false);
   const [posts, setPosts] = useState();
   const postsRef = db.collection(collectionName);
 
-  const findPost = (query) => {
-    //https://stackoverflow.com/a/56815787/13307617 partial
-    postsRef
+  const findPost = async (query) => {
+    //https://stackoverflow.com/a/56815787/13307617 partial search
+    const result = await postsRef
       .where("content", ">=", query)
       .where("content", "<=", query + "~")
-      .get()
-      .then((querySnapshot) => {
-        const data = querySnapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        console.log(`doc matching ${query}`, data);
-      });
+      .get();
+
+    return result.docs.map((doc) => doc.data());
   };
 
   const submitPost = async (post) => {

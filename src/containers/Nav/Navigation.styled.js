@@ -23,6 +23,7 @@ export const Navbar = styled.nav`
   flex: 1;
   align-self: flex-start;
   padding: 0.5rem 2rem;
+  height: 80px;
   display: flex;
   justify-content: ${({ center }) => (center ? "center" : "space-between")};
   align-items: center;
