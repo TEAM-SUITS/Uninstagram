@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import { Prompt } from 'react-router-dom';
-import styled from 'styled-components';
-import PostMain from 'components/PostMain/PostMain';
-import Posting from 'components/Posting/Posting';
-// import PageContainer from 'containers/PageContainer/PageContainer.styled';
-// import { pageEffect } from 'styles/motions/variants';
+import React, { useState } from "react";
+import { Prompt } from "react-router-dom";
+import styled from "styled-components";
+import PostMain from "components/PostMain/PostMain";
+import Posting from "components/Posting/Posting";
+import useDatabase from "hooks/useDatabase";
+import { useSelector } from "react-redux";
+import { selectCurrentUser } from "redux/storage/currentUser/currentUser";
 
 /* -------------------------------------------------------------------------- */
 const StyledPostPage = styled.div`
@@ -17,7 +18,11 @@ const StyledPostPage = styled.div`
 
 export default function PostPage() {
   const [isWriting, setIsWriting] = useState(false);
-  const [content, setContent] = React.useState('');
+  const [content, setContent] = React.useState("");
+  const { submitPost } = useDatabase("posts");
+  const { userName, avatar } = useSelector((state) => {
+    return selectCurrentUser(state);
+  });
 
   const handleChange = (e) => {
     setContent(e.target.value);
@@ -27,14 +32,16 @@ export default function PostPage() {
   };
 
   const handleCancel = () => {
-    setContent('');
+    setContent("");
     setIsWriting(!isWriting);
   };
 
   const handleSubmit = () => {
     console.log(content);
-    setContent('');
+    setContent("");
     setIsWriting(!isWriting);
+    const post = { userName, avatar, content };
+    submitPost(post);
   };
 
   return (
