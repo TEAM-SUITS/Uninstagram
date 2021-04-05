@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Prompt } from 'react-router-dom';
 import styled from 'styled-components';
 import PostMain from 'components/PostMain/PostMain';
 import Posting from 'components/Posting/Posting';
@@ -22,13 +23,19 @@ export default function PostPage() {
   };
 
   return (
-    <StyledPostPage>
-      {isWriting ? (
-        <Posting handleClick={toggleIsWriting} />
-      ) : (
-        <PostMain handleClick={toggleIsWriting} />
-      )}
-    </StyledPostPage>
+    <>
+    {/* <Prompt
+      when={if ()}
+      message='You have unsaved changes, are you sure you want to leave?'
+    /> */}
+      <StyledPostPage>
+        {isWriting ? (
+          <Posting handleClick={toggleIsWriting} />
+        ) : (
+          <PostMain handleClick={toggleIsWriting} />
+        )}
+      </StyledPostPage>
+    </>
     // <PageContainer
     //   variants={pageEffect}
     //   initial="hidden"

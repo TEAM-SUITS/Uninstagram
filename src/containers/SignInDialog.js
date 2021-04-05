@@ -17,7 +17,6 @@ export default function SignInDialog({
   
   const { userName } = useSelector(
     state => {
-      console.log(selectCurrentUser(state));
       return selectCurrentUser(state);
     }
   );
