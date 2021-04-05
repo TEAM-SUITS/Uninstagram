@@ -1,13 +1,19 @@
-import React from "react";
-import styled from "styled-components";
-import PageContainer from "containers/PageContainer/PageContainer.styled";
-import useDetectViewport from "hooks/useDetectViewport";
-import { pageEffect } from "styles/motions/variants";
+import React from 'react';
+import styled from 'styled-components';
+import PageContainer from 'containers/PageContainer/PageContainer.styled';
+import useDetectViewport from 'hooks/useDetectViewport';
+import { pageEffect } from 'styles/motions/variants';
 
-import AvatarSettingBox from "containers/AvatarSettingBox/AvatarSettingBox";
-import { MotionButton } from "components/Button/Button.styled";
+import AvatarSettingBox from 'containers/AvatarSettingBox/AvatarSettingBox';
+import { MotionButton } from 'components/Button/Button.styled';
 
 import useBitFaceState from 'hooks/useBitFaceState';
+
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  selectCurrentUser,
+  editCurrentUser,
+} from 'redux/storage/currentUser/currentUser';
 
 /* -------------------------------------------------------------------------- */
 
@@ -30,15 +36,28 @@ const ProfileContainer = styled.div`
 
 /* -------------------------------------------------------------------------- */
 
+// 초기값 url
 let bitFaceUrl = '';
 
 export default function ProfilePage() {
   const { isMobile } = useDetectViewport();
-  const [userName, setUserName] = React.useState('안예인');
+
+  const { userName: storedUserName } = useSelector((state) =>
+    selectCurrentUser(state)
+  );
+  const dispatch = useDispatch();
+
+  const [userName, setUserName] = React.useState(storedUserName);
   bitFaceUrl = useBitFaceState(userName);
-  const handleInput = e => {
+
+  const handleInput = (e) => {
     setUserName(e.target.value);
-  }
+  };
+
+  const handleEditUser = () => {
+    if (userName === storedUserName) return;
+    dispatch(editCurrentUser({ userName: userName, avatar: bitFaceUrl }));
+  };
 
   return (
     <PageContainer
@@ -57,7 +76,7 @@ export default function ProfilePage() {
           avatarUrl={bitFaceUrl}
           handleInput={handleInput}
         />
-        <MotionButton>DONE</MotionButton>
+        <MotionButton onClick={handleEditUser}>DONE</MotionButton>
       </ProfileContainer>
     </PageContainer>
   );
