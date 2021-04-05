@@ -1,16 +1,13 @@
-import React from 'react';
-import Profile from 'components/PostcardProfile/PostcardProfile.styled';
-import { StyledPostcard } from 'components/Postcard/Postcard.styled';
+import React from "react";
+import Profile from "components/PostcardProfile/PostcardProfile.styled";
+import { StyledPostcard } from "components/Postcard/Postcard.styled";
 
 /* -------------------------------------------------------------------------- */
 
-export const Postcard = ({ isMobile, content = '' }) => {
+export const Postcard = ({ isMobile, imgUrl, userName, content = "" }) => {
   return (
     <StyledPostcard>
-      <Profile
-        imgUrl='http://turnyournameintoaface.com/face/01010101.png'
-        userName='안예인짱짱맨'
-      />
+      <Profile imgUrl={imgUrl} userName={userName} />
       {isMobile ? (
         <p>{content}</p>
       ) : (

@@ -1,13 +1,11 @@
-import React from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { selectCurrentUser } from 'redux/storage/currentUser/currentUser';
-
+import React from "react";
+import { Switch, Route, Redirect } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectCurrentUser } from "redux/storage/currentUser/currentUser";
 import SignInDialog from "containers/SignInDialog";
-import HomeLogoLink from 'containers/Header/HomeLogoLink';
-import Navigation from 'containers/Nav/Navigation';
-import { GlobalColors } from 'styles/pages/theme.styled';
-import Spinner from 'components/Spinner/Spinner.styled';
+import HomeLogoLink from "containers/Header/HomeLogoLink";
+import Navigation from "containers/Nav/Navigation";
+import { GlobalColors } from "styles/pages/theme.styled";
 
 import {
   HomePage,
@@ -16,24 +14,14 @@ import {
   ProfilePage,
   SearchPage,
   PageNotFound,
-} from 'pages/Pages';
+} from "pages/Pages";
 
 /* -------------------------------------------------------------------------- */
 
 function App() {
-  const [isLoading, setIsLoading] = React.useState(true);
-  const { userName } = useSelector(
-    state => selectCurrentUser(state)
-  );
+  const [loginStatus, setLoginStatus] = React.useState(false);
 
-  // test spinner
-  setTimeout(() => {
-    setIsLoading(false);
-  }, 500);
-
-  if (isLoading) {
-    return <Spinner />;
-  }
+  const { userName } = useSelector((state) => selectCurrentUser(state));
 
   return (
     <div className="App">
