@@ -1,7 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
-import MenuContainer from '../MenuContainer/MenuContainer';
-import { boxShadow } from '../../styles/common/common.styled';
+import React from "react";
+import styled from "styled-components";
+import MenuContainer from "../MenuContainer/MenuContainer";
+import { boxShadow } from "../../styles/common/common.styled";
 
 const StyledPosting = styled.div`
   display: flex;

@@ -5,8 +5,6 @@ import useDatabase from "hooks/useDatabase";
 import PageContainer from "containers/PageContainer/PageContainer.styled";
 import { pageEffect } from "styles/motions/variants";
 import Spinner from "components/Spinner/Spinner.styled";
-import { selectCurrentUser } from "redux/storage/currentUser/currentUser";
-import { useSelector } from "react-redux";
 
 /* -------------------------------------------------------------------------- */
 
@@ -35,16 +33,11 @@ const FlexContainer = styled.div`
 /* -------------------------------------------------------------------------- */
 
 export default function HomePage() {
-
   const { posts, loading } = useDatabase("posts");
 
   return (
     <>
-      <PageContainer
-        variants={pageEffect}
-        initial="hidden"
-        animate="visible"
-      >
+      <PageContainer variants={pageEffect} initial="hidden" animate="visible">
         <FlexContainer>
           {loading ? (
             <Spinner />
