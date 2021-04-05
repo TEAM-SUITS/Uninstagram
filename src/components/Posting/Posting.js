@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import MenuContainer from '../MenuContainer/MenuContainer';
 import { boxShadow } from '../../styles/common/common.styled';
+import { useSelector } from 'react-redux';
+import { selectCurrentUser } from 'redux/storage/currentUser/currentUser';
 
 const StyledPosting = styled.div`
   display: flex;
@@ -69,8 +71,10 @@ const StyledButton = styled.button`
 `;
 
 const Posting = ({ content, handleCancel, handleChange, handleSubmit }) => {
+  const { userName } = useSelector((state) => selectCurrentUser(state));
+
   return (
-    <MenuContainer heading="작성 전 유의사항">
+    <MenuContainer heading={`${userName} 하고 싶은 말 다 해.`}>
       <StyledPosting>
         <textarea onChange={handleChange} value={content} />
         <span>{`${content.length} / 100`}</span>
