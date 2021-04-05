@@ -1,3 +1,12 @@
+import { createSelector } from 'reselect';
+
+/* reselect---------------------------------------------------------------- */
+const selectCurrentUserState = state => state.currentUser;
+export const selectCurrentUser = createSelector(
+  [selectCurrentUserState],
+  currentUser => currentUser
+);
+
 /* action types------------------------------------------------------------------ */
 const READ_CURRENT_USER = '현재 사용자 정보 조회';
 const ADD_CURRENT_USER = '현재 사용자 정보 추가';
@@ -30,6 +39,7 @@ export const currentUserReducer = (state = initialState, { type, data }) => {
       return state;
 
     case ADD_CURRENT_USER:
+      console.log(data);
       return {
         ...state,
         data,
