@@ -54,14 +54,22 @@ const ButtonContainer = styled.div`
 
 const StyledButton = styled.button`
   width: 80px;
-  padding: 5px 0;
+  height: 42px;
   font-size: 1rem;
   border-radius: 5px;
   border: 0;
-  background-color: gray;
-  ${boxShadow}
-  &:focus {
+  background-color: var(--color-darkgray);
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  l ${boxShadow} &:focus {
     outline: none;
+  }
+  &:disabled {
+    background-color: #aaa;
+    border: 2px solid var(--color-darkgray);
+    cursor: not-allowed;
   }
   @media screen and (min-width: 480px) {
     width: 100px;
@@ -81,7 +89,9 @@ const Posting = ({ content, handleCancel, handleChange, handleSubmit }) => {
       </StyledPosting>
       <ButtonContainer>
         <StyledButton onClick={handleCancel}>Cancel</StyledButton>
-        <StyledButton onClick={handleSubmit}>Post</StyledButton>
+        <StyledButton onClick={handleSubmit} disabled={!content.length}>
+          Post
+        </StyledButton>
       </ButtonContainer>
     </MenuContainer>
   );
