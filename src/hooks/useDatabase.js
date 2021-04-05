@@ -34,7 +34,7 @@ export default function useGetPosts(collectionName) {
   useEffect(() => {
     setLoading(true);
     const unsubscribe = postsRef
-      .orderBy("createdAt", "asc")
+      .orderBy("createdAt", "desc")
       .onSnapshot((querySnapshot) => {
         const _posts = [];
         querySnapshot.forEach((doc) => {
