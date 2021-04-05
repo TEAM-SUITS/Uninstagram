@@ -34,6 +34,8 @@ export function MotionButton({ onClick, children }) {
       onClick={onClick}
       whileFocus={hoverMotion}
       whileHover={hoverMotion}
-    >{children}</StyledButton>
+    >
+      {children}
+    </StyledButton>
   );
 }
