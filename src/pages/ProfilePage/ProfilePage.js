@@ -6,6 +6,7 @@ import Navigation from 'containers/Nav/Navigation';
 
 import AvatarSettingBox from 'containers/AvatarSettingBox/AvatarSettingBox';
 import { MotionButton } from 'components/Button/Button.styled';
+import useBitFaceState from 'hooks/useBitFaceState';
 
 /* -------------------------------------------------------------------------- */
 
@@ -28,8 +29,14 @@ const ProfileContainer = styled.div`
 
 /* -------------------------------------------------------------------------- */
 
+let bitFaceUrl = '';
+
 export default function ProfilePage() {
   const [userName, setUserName] = React.useState('안예인');
+  bitFaceUrl = useBitFaceState(userName);
+  const handleInput = e => {
+    setUserName(e.target.value);
+  }
 
   return (
     <>
@@ -38,7 +45,14 @@ export default function ProfilePage() {
 
       <ProfileContainer>
         <h1>프로필 조회 · 수정</h1>
-        <AvatarSettingBox initValue={userName} id="profileInput" />
+        <AvatarSettingBox
+          // initValue=""
+          id="profileInput"
+          label="프로필 조회 및 수정"
+          userName={userName}
+          avatarUrl={bitFaceUrl}
+          handleInput={handleInput}
+        />
         <MotionButton>DONE</MotionButton>
       </ProfileContainer>
     </>
