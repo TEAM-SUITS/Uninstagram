@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { Postcard } from "containers/Postcard";
+import useDatabase from "hooks/useDatabase";
 import PageContainer from "containers/PageContainer/PageContainer.styled";
 import { pageEffect } from "styles/motions/variants";
-
 
 /* -------------------------------------------------------------------------- */
 
@@ -32,6 +32,8 @@ const FlexContainer = styled.div`
 /* -------------------------------------------------------------------------- */
 
 export default function HomePage() {
+
+  const { posts, loading } = useDatabase("posts");
 
   return (
     <>
