@@ -17,14 +17,6 @@ const StyledMorePageContainer = styled.div`
 export default function MorePage() {
   const [tab, setTab] = useState('MAIN');
 
-  const onClickHowToUse = () => {
-    setTab('HOW_TO_USE');
-  };
-
-  const onClickAboutUs = () => {
-    setTab('ABOUT_US');
-  };
-
   const handleTab = {
     AboutUs() {
       setTab('ABOUT_US');

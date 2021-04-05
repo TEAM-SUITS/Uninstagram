@@ -15,11 +15,14 @@ import {
   editCurrentUser,
 } from 'redux/storage/currentUser/currentUser';
 
+import { Link } from 'react-router-dom';
+
 /* -------------------------------------------------------------------------- */
 
 const ProfileContainer = styled.div`
   background-color: var(--color-lightgray);
   width: 80vw;
+  height: 360px;
   min-width: 300px;
   max-width: 680px;
   padding: 1em;
@@ -76,7 +79,12 @@ export default function ProfilePage() {
           avatarUrl={bitFaceUrl}
           handleInput={handleInput}
         />
-        <MotionButton onClick={handleEditUser}>DONE</MotionButton>
+
+        {userName === storedUserName ? null : (
+          <Link to="/" style={{ color: 'inherit' }}>
+            <MotionButton onClick={handleEditUser}>DONE</MotionButton>
+          </Link>
+        )}
       </ProfileContainer>
     </PageContainer>
   );

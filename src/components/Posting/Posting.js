@@ -84,7 +84,7 @@ const Posting = ({ content, handleCancel, handleChange, handleSubmit }) => {
   return (
     <MenuContainer heading={`${userName} 하고 싶은 말 다 해.`}>
       <StyledPosting>
-        <textarea onChange={handleChange} value={content} />
+        <textarea onChange={handleChange} />
         <span>{`${content.length} / 100`}</span>
       </StyledPosting>
       <ButtonContainer>
