@@ -25,3 +25,7 @@ export const resetList = css`
   padding-left: 0;
   list-style-type: none;
 `;
+
+export const boxShadow = css`
+  box-shadow: 0 2px 5px #00000025;
+`;
