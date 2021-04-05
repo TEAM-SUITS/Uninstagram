@@ -1,21 +1,21 @@
 import React from 'react';
-import useBitFaceState from 'hooks/useBitFaceState';
+// import useBitFaceState from 'hooks/useBitFaceState';
 import styled from 'styled-components';
 
 import Input from 'components/Input/Input';
 
 /* -------------------------------------------------------------------------- */
 
-let bitFaceUrl = '';
+// let bitFaceUrl = '';
 
-const SignInImage = styled.img.attrs(() => ({
-  src: bitFaceUrl,
+const SignInImage = styled.img.attrs(props => ({
+  src: props.avatarUrl,
   alt: '아바타',
 }))`
   display: block;
   border-radius: 5px;
   margin: 0 auto 1em;
-  box-shadow: 3px 3px 0 $BLACK;
+  box-shadow: 3px 3px 0 var(--color-black);
   width: 125px;
   height: 150px;
 `;
@@ -32,21 +32,28 @@ const InputContainer = styled.div`
 
 /* -------------------------------------------------------------------------- */
 
-export default function AvatarSettingBox({ initValue = '', id }) {
+export default function AvatarSettingBox({
+  // initValue = '',
+  id,
+  label,
+  userName,
+  avatarUrl = 'http://localhost:3000/assets/notFound.png',
+  handleInput,
+}) {
 
-  const [userName, setUserName] = React.useState(initValue);
-  bitFaceUrl = useBitFaceState(userName);
+  // const [userName, setUserName] = React.useState(initValue);
+  // bitFaceUrl = useBitFaceState(userName);
 
-  const handleInput = e => setUserName(e.target.value);
+  // const handleInput = e => setUserName(e.target.value);
 
   return (
     <>
-      <SignInImage />
+      <SignInImage avatarUrl={avatarUrl} />
       <InputContainer>
         <Input
           id={id}
           type="text"
-          label="현재 프로필 조회 및 수정"
+          label={label}
           value={userName}
           width="34%"
           center={true}
