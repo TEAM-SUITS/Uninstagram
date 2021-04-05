@@ -7,6 +7,8 @@ import useDatabase from 'hooks/useDatabase';
 import { useSelector } from 'react-redux';
 import { selectCurrentUser } from 'redux/storage/currentUser/currentUser';
 import gownmalConverter from 'utils/Gownmal';
+import PageContainer from "containers/PageContainer/PageContainer.styled";
+import { pageEffect } from "styles/motions/variants";
 
 /* -------------------------------------------------------------------------- */
 const StyledPostPage = styled.div`
@@ -45,7 +47,7 @@ export default function PostPage({ history }) {
   };
 
   return (
-    <>
+    <PageContainer variants={pageEffect} initial="hidden" animate="visible">
       <Prompt when={content !== ''} message="기껏 쳐놓고 나갈려고요ㅇㅅㅇ?" />
       <StyledPostPage>
         {isWriting ? (
@@ -59,6 +61,6 @@ export default function PostPage({ history }) {
           <PostMain handleClick={() => setIsWriting(!isWriting)} />
         )}
       </StyledPostPage>
-    </>
+    </PageContainer>
   );
 }
