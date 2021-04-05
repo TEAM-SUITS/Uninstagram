@@ -54,8 +54,8 @@ const ProfileImage = styled.div`
 /* -------------------------------------------------------------------------- */
 
 export default function Profile({
-  imgUrl = 'http://turnyournameintoaface.com/face/01010101.png',
-  userName = '',
+  imgUrl,
+  userName,
 }) {
   return (
     <ProfileBox>

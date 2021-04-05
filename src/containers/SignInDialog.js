@@ -15,10 +15,15 @@ export default function SignInDialog({
   visible = false, // 다이얼로그 가시성 여부
 }) {
   
-  const { userName, avatar } = useSelector(
-    state => selectCurrentUser(state)
+  const { userName } = useSelector(
+    state => {
+      console.log(selectCurrentUser(state));
+      return selectCurrentUser(state);
+    }
   );
   const dispatch = useDispatch();
+
+  console.log(userName);
 
   const [nickName, setNickName] = React.useState('');
   bitFaceUrl = useBitFaceState(nickName);
