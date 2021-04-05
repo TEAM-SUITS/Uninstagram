@@ -6,6 +6,7 @@ import PageContainer from 'containers/PageContainer/PageContainer.styled';
 import useDetectViewport from 'hooks/useDetectViewport';
 import { pageEffect } from 'styles/motions/variants';
 import MenuContainer from 'components/MenuContainer/MenuContainer';
+import useDatabase from "hooks/useDatabase";
 
 /* -------------------------------------------------------------------------- */
 
@@ -24,12 +25,15 @@ const Paragraph = styled.p`
 `;
 export default function SearchPage() {
   const { isMobile } = useDetectViewport();
+
+  const { findPost } = useDatabase("posts");
+  console.log(findPost("이게"));
   return (
     <PageContainer
       variants={pageEffect}
       initial="hidden"
       animate="visible"
-      ismobile={'' + isMobile}
+      ismobile={"" + isMobile}
     >
       <Input
         id="postSearch"
