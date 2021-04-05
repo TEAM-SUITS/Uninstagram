@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import PostMain from 'components/PostMain/PostMain';
 import Posting from 'components/Posting/Posting';
+// import PageContainer from 'containers/PageContainer/PageContainer.styled';
+// import { pageEffect } from 'styles/motions/variants';
 
 /* -------------------------------------------------------------------------- */
 const StyledPostPage = styled.div`
@@ -27,5 +29,11 @@ export default function PostPage() {
         <PostMain handleClick={toggleIsWriting} />
       )}
     </StyledPostPage>
+    // <PageContainer
+    //   variants={pageEffect}
+    //   initial="hidden"
+    //   animate="visible"
+    // >
+    // </PageContainer>
   );
 }

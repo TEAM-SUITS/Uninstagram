@@ -28,9 +28,10 @@ const hoverMotion = {
 
 const StyledButton = motion(Button);
 
-export function MotionButton({ children }) {
+export function MotionButton({ onClick, children }) {
   return (
     <StyledButton
+      onClick={onClick}
       whileFocus={hoverMotion}
       whileHover={hoverMotion}
     >{children}</StyledButton>
