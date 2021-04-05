@@ -2,9 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import MenuContainer from "../MenuContainer/MenuContainer";
 import { boxShadow } from "../../styles/common/common.styled";
-import useDatabase from "hooks/useDatabase";
-import { useSelector } from "react-redux";
-import { selectCurrentUser } from "redux/storage/currentUser/currentUser";
 
 const StyledPosting = styled.div`
   display: flex;
@@ -71,27 +68,7 @@ const StyledButton = styled.button`
   }
 `;
 
-const Posting = ({ handleClick }) => {
-  const [content, setContent] = React.useState("");
-  const { userName, avatar } = useSelector((state) => {
-    return selectCurrentUser(state);
-  });
-
-  const { submitPost } = useDatabase("posts");
-
-  const handleChange = (e) => {
-    setContent(e.target.value);
-
-    if (e.target.value.length > 100) {
-      setContent(content.slice(0, 99));
-    }
-  };
-
-  const handleSubmit = () => {
-    const post = { userName, avatar, content };
-    submitPost(post);
-  };
-
+const Posting = ({ content, handleCancel, handleChange, handleSubmit }) => {
   return (
     <MenuContainer heading="작성 전 유의사항">
       <StyledPosting>
@@ -99,24 +76,8 @@ const Posting = ({ handleClick }) => {
         <span>{`${content.length} / 100`}</span>
       </StyledPosting>
       <ButtonContainer>
-        <StyledButton
-          onClick={() => {
-            setContent("");
-            handleClick();
-          }}
-        >
-          Cancel
-        </StyledButton>
-        <StyledButton
-          onClick={() => {
-            // send to database
-            handleSubmit();
-            setContent("");
-            handleClick();
-          }}
-        >
-          Post
-        </StyledButton>
+        <StyledButton onClick={handleCancel}>Cancel</StyledButton>
+        <StyledButton onClick={handleSubmit}>Post</StyledButton>
       </ButtonContainer>
     </MenuContainer>
   );

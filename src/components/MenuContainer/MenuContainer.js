@@ -14,7 +14,7 @@ const MenuContainer = ({ children, type, heading, handler }) => (
 
 MenuContainer.propTypes = {
   heading: PropTypes.string.isRequired,
-  handler: PropTypes.object.isRequired,
+  handler: PropTypes.object,
   type: PropTypes.string,
 };
 export default MenuContainer;
