@@ -39,8 +39,6 @@ export const currentUserReducer = (state = initialState, { type, data }) => {
       return state;
 
     case ADD_CURRENT_USER:
-      console.log(data);
-      console.log(initialState);
       return {
         ...state,
         ...data

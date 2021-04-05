@@ -23,8 +23,6 @@ export default function SignInDialog({
   );
   const dispatch = useDispatch();
 
-  console.log(userName);
-
   const [nickName, setNickName] = React.useState('');
   bitFaceUrl = useBitFaceState(nickName);
   const handleInput = e => {
@@ -38,7 +36,6 @@ export default function SignInDialog({
 
   const addUserName = () => {
     dispatch(addCurrentUser(userData));
-    console.log(userData);
   };
 
   return (
