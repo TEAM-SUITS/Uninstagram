@@ -9,7 +9,7 @@ export default function useGetPosts(collectionName) {
   const getAllPosts = () => {
     setLoading(true);
     const unsubscribe = postsRef
-      .orderBy("createdAt", "desc")
+      .orderBy("createdAt", "asc")
       .onSnapshot((querySnapshot) => {
         const _posts = [];
         querySnapshot.forEach((doc) => {
