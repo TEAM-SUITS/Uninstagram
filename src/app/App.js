@@ -1,9 +1,8 @@
-import React from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
-import HomeLogoLink from 'containers/Header/HomeLogoLink';
-import Navigation from 'containers/Nav/Navigation';
-import { GlobalColors } from 'styles/pages/theme.styled';
-import Spinner from 'components/Spinner/Spinner.styled';
+import React from "react";
+import { Switch, Route, Redirect } from "react-router-dom";
+import HomeLogoLink from "containers/Header/HomeLogoLink";
+import Navigation from "containers/Nav/Navigation";
+import { GlobalColors } from "styles/pages/theme.styled";
 
 import {
   HomePage,
@@ -12,22 +11,12 @@ import {
   ProfilePage,
   SearchPage,
   PageNotFound,
-} from 'pages/Pages';
+} from "pages/Pages";
 
 /* -------------------------------------------------------------------------- */
 
 function App() {
-  const [isLoading, setIsLoading] = React.useState(true);
   const [loginStatus, setLoginStatus] = React.useState(false);
-
-  // test spinner
-  setTimeout(() => {
-    setIsLoading(false);
-  }, 500);
-
-  if (isLoading) {
-    return <Spinner />;
-  }
 
   return (
     <div className="App">
