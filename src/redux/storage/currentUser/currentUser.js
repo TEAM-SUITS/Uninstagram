@@ -29,7 +29,7 @@ export const editCurrentUser = newUserData => ({
 
 /* initial state + reducer----------------------------------------------------- */
 const initialState = {
-  userName: '',
+  userName: 'dqw',
   avatar: ''
 };
 
@@ -40,6 +40,7 @@ export const currentUserReducer = (state = initialState, { type, data }) => {
 
     case ADD_CURRENT_USER:
       console.log(data);
+      console.log(initialState);
       return {
         ...state,
         ...data
@@ -49,7 +50,7 @@ export const currentUserReducer = (state = initialState, { type, data }) => {
     case EDIT_CURRENT_USER:
       return {
         ...state,
-        data,
+        ...data,
       };
 
     default:

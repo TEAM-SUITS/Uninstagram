@@ -8,7 +8,7 @@ const MenuContainer = ({ children, type, heading, handler }) => (
     <StyledMenuContainer.Divider />
     <StyledMenuContainer.Content>{children}</StyledMenuContainer.Content>
 
-    <MenuIcons type={type ? type : null} handler={handler} />
+    {type && <MenuIcons type={type} handler={handler} />}
   </StyledMenuContainer>
 );
 

@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { Postcard } from "containers/Postcard";
-import SignInDialog from "containers/SignInDialog";
 import useDatabase from "hooks/useDatabase";
 import PageContainer from "containers/PageContainer/PageContainer.styled";
 import { pageEffect } from "styles/motions/variants";
@@ -36,13 +35,16 @@ const FlexContainer = styled.div`
 /* -------------------------------------------------------------------------- */
 
 export default function HomePage() {
+
   const { posts, loading } = useDatabase("posts");
 
   return (
     <>
-      <SignInDialog visible={false} />
-
-      <PageContainer variants={pageEffect} initial="hidden" animate="visible">
+      <PageContainer
+        variants={pageEffect}
+        initial="hidden"
+        animate="visible"
+      >
         <FlexContainer>
           {loading ? (
             <Spinner />
