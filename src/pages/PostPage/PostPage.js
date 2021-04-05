@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import { Prompt } from "react-router-dom";
-import styled from "styled-components";
-import PostMain from "components/PostMain/PostMain";
-import Posting from "components/Posting/Posting";
-import useDatabase from "hooks/useDatabase";
-import { useSelector } from "react-redux";
-import { selectCurrentUser } from "redux/storage/currentUser/currentUser";
+import React, { useState } from 'react';
+import { Prompt } from 'react-router-dom';
+import styled from 'styled-components';
+import PostMain from 'components/PostMain/PostMain';
+import Posting from 'components/Posting/Posting';
+import useDatabase from 'hooks/useDatabase';
+import { useSelector } from 'react-redux';
+import { selectCurrentUser } from 'redux/storage/currentUser/currentUser';
 import gownmalConverter from 'utils/Gownmal';
 
 /* -------------------------------------------------------------------------- */
@@ -17,10 +17,10 @@ const StyledPostPage = styled.div`
   align-items: center;
 `;
 
-export default function PostPage() {
+export default function PostPage({ history }) {
   const [isWriting, setIsWriting] = useState(false);
-  const [content, setContent] = React.useState("");
-  const { submitPost } = useDatabase("posts");
+  const [content, setContent] = React.useState('');
+  const { submitPost } = useDatabase('posts');
   const { userName, avatar } = useSelector((state) => {
     return selectCurrentUser(state);
   });
@@ -33,7 +33,7 @@ export default function PostPage() {
   };
 
   const handleCancel = () => {
-    setContent("");
+    setContent('');
     setIsWriting(!isWriting);
   };
 
@@ -41,15 +41,12 @@ export default function PostPage() {
     setIsWriting(!isWriting);
     const post = { userName, avatar, content: gownmalConverter(content) };
     submitPost(post);
-    setContent("");
+    setContent('');
   };
 
   return (
     <>
-      <Prompt
-        when={content !== ''}
-        message="기껏 쳐놓고 나갈려고요ㅇㅅㅇ?"
-      />
+      <Prompt when={content !== ''} message="기껏 쳐놓고 나갈려고요ㅇㅅㅇ?" />
       <StyledPostPage>
         {isWriting ? (
           <Posting
@@ -63,11 +60,5 @@ export default function PostPage() {
         )}
       </StyledPostPage>
     </>
-    // <PageContainer
-    //   variants={pageEffect}
-    //   initial="hidden"
-    //   animate="visible"
-    // >
-    // </PageContainer>
   );
 }
