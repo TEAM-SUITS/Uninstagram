@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Postcard } from "containers/Postcard";
 import SignInDialog from "containers/SignInDialog";
+import useDatabase from "hooks/useDatabase";
 
 /* -------------------------------------------------------------------------- */
 
@@ -30,6 +31,8 @@ const FlexContainer = styled.div`
 /* -------------------------------------------------------------------------- */
 
 export default function HomePage() {
+  const { posts, loading } = useDatabase("posts");
+
   return (
     <>
       <SignInDialog visible={false} />
