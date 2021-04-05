@@ -17,25 +17,39 @@ const StyledPostPage = styled.div`
 
 export default function PostPage() {
   const [isWriting, setIsWriting] = useState(false);
+  const [content, setContent] = React.useState('');
 
-  const toggleIsWriting = () => {
+  const handleChange = (e) => {
+    setContent(e.target.value);
+    if (e.target.value.length > 100) {
+      setContent(content.slice(0, 99));
+    }
+  };
+
+  const handleCancel = () => {
+    setContent('');
+    setIsWriting(!isWriting);
+  };
+
+  const handleSubmit = () => {
+    console.log(content);
+    setContent('');
     setIsWriting(!isWriting);
   };
 
   return (
-    <>
-    {/* <Prompt
-      when={if ()}
-      message='You have unsaved changes, are you sure you want to leave?'
-    /> */}
-      <StyledPostPage>
-        {isWriting ? (
-          <Posting handleClick={toggleIsWriting} />
-        ) : (
-          <PostMain handleClick={toggleIsWriting} />
-        )}
-      </StyledPostPage>
-    </>
+    <StyledPostPage>
+      {isWriting ? (
+        <Posting
+          content={content}
+          handleCancel={handleCancel}
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+        />
+      ) : (
+        <PostMain handleClick={() => setIsWriting(!isWriting)} />
+      )}
+    </StyledPostPage>
     // <PageContainer
     //   variants={pageEffect}
     //   initial="hidden"
