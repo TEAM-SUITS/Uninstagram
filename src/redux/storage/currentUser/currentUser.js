@@ -1,10 +1,10 @@
 import { createSelector } from 'reselect';
 
 /* reselect---------------------------------------------------------------- */
-const selectCurrentUserState = state => state.currentUser;
+const selectCurrentUserState = (state) => state.currentUser;
 export const selectCurrentUser = createSelector(
   [selectCurrentUserState],
-  currentUser => currentUser
+  (currentUser) => currentUser
 );
 
 /* action types------------------------------------------------------------------ */
@@ -17,20 +17,20 @@ export const readCurrentUser = () => ({
   type: READ_CURRENT_USER,
 });
 
-export const addCurrentUser = userData => ({
+export const addCurrentUser = (userData) => ({
   type: ADD_CURRENT_USER,
   data: userData,
 });
 
-export const editCurrentUser = newUserData => ({
+export const editCurrentUser = (newUserData) => ({
   type: EDIT_CURRENT_USER,
   data: newUserData,
 });
 
 /* initial state + reducer----------------------------------------------------- */
 const initialState = {
-  userName: 'dqw',
-  avatar: ''
+  userName: '',
+  avatar: '',
 };
 
 export const currentUserReducer = (state = initialState, { type, data }) => {
@@ -41,9 +41,9 @@ export const currentUserReducer = (state = initialState, { type, data }) => {
     case ADD_CURRENT_USER:
       return {
         ...state,
-        ...data
+        ...data,
       };
-      // data = { userName, avatar }
+    // data = { userName, avatar }
 
     case EDIT_CURRENT_USER:
       return {
@@ -54,4 +54,4 @@ export const currentUserReducer = (state = initialState, { type, data }) => {
     default:
       return state;
   }
-}
+};
