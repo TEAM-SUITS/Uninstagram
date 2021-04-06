@@ -31,8 +31,8 @@ Uninstagram은 가짜 선량함을 방지하기 위해 ***고운 말 필터링**
 
 ## 💿 Technologies
 
-- React.js / Styled Component
-- Redux / Firebase / Axios
+- ES6 / React.js / Styled Components
+- Redux / Firebase
 
 <br/>
 
