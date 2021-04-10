@@ -60,7 +60,6 @@ export default function Dialog({
     if (visible) {
       const dialogNode = dialogRef.current;
       dialogNode.setAttribute('tabIndex', -1);
-      dialogNode.querySelector('input').focus();
       dialogNode.focus();
 
       // 다이얼로그 뒤에 영역이 모바일 보이스리더기에 읽히지 않도록 처리
