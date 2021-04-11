@@ -2,10 +2,6 @@ import React from 'react';
 import Portal from 'components/Portal/Portal';
 import styled from 'styled-components';
 
-/* -------------------------------------------------------------------------- */
-
-// 디바이스 감지
-
 /* 🍕 Styled Components-------------------------------------------------------------- */
 
 const DialogContainer = styled.div.attrs(() => ({
