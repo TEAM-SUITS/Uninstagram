@@ -20,6 +20,12 @@ import { Link } from 'react-router-dom';
 /* -------------------------------------------------------------------------- */
 
 const ProfileContainer = styled.div`
+  display: flex;
+  flex-flow: column nowrap;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+
   background-color: var(--color-lightgray);
   width: 80vw;
   height: 360px;
@@ -34,6 +40,11 @@ const ProfileContainer = styled.div`
     text-align: center;
     font-weight: 700;
     font-size: 1.2em;
+  }
+
+  small {
+    margin: 10px 0;
+    font-size: 12px;
   }
 `;
 
@@ -53,8 +64,19 @@ export default function ProfilePage() {
   const [userName, setUserName] = React.useState(storedUserName);
   bitFaceUrl = useBitFaceState(userName);
 
+  const handleKeyValue = e => {
+    if (e.key === ' ') {
+      console.log('공백은 안돼용👄');
+      setUserName(userName.trim());
+    }
+  };
+
   const handleInput = (e) => {
-    setUserName(e.target.value);
+    const value = e.target.value;
+
+    if (value.length > 12) return;
+
+    setUserName(value);
   };
 
   const handleEditUser = () => {
@@ -78,7 +100,13 @@ export default function ProfilePage() {
           userName={userName}
           avatarUrl={bitFaceUrl}
           handleInput={handleInput}
+          handleKeyValue={handleKeyValue}
         />
+
+        <small>
+          닉네임은 최대 12자리까지 가능합니다.
+          <span role="img" aria-label="heart">💙</span>
+        </small>
 
         {userName === storedUserName ? null : (
           <Link to="/" style={{ color: 'inherit' }}>

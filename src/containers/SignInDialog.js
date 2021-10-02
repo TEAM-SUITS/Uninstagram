@@ -24,8 +24,19 @@ export default function SignInDialog({
 
   const [nickName, setNickName] = React.useState('');
   bitFaceUrl = useBitFaceState(nickName);
+  const handleKeyValue = e => {
+    if (e.key === ' ') {
+      console.log('공백은 안돼용👄');
+      setNickName(nickName.trim());
+    }
+  };
+
   const handleInput = e => {
-    setNickName(e.target.value);
+    const value = e.target.value;
+
+    if (value.length > 12) return;
+
+    setNickName(value);
   };
 
   const userData = {
@@ -46,6 +57,7 @@ export default function SignInDialog({
         userName={nickName}
         avatarUrl={bitFaceUrl}
         handleInput={handleInput}
+        handleKeyValue={handleKeyValue}
       />
       <MotionButton onClick={addUserName}>DONE</MotionButton>
     </Dialog>

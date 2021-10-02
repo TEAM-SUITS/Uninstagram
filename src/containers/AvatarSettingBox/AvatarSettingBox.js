@@ -39,13 +39,8 @@ export default function AvatarSettingBox({
   userName,
   avatarUrl = 'http://localhost:3000/assets/notFound.png',
   handleInput,
+  handleKeyValue,
 }) {
-
-  // const [userName, setUserName] = React.useState(initValue);
-  // bitFaceUrl = useBitFaceState(userName);
-
-  // const handleInput = e => setUserName(e.target.value);
-
   return (
     <>
       <SignInImage avatarUrl={avatarUrl} />
@@ -58,6 +53,7 @@ export default function AvatarSettingBox({
           width="34%"
           center={true}
           onChange={handleInput}
+          onKeyUp={handleKeyValue}
         />
       </InputContainer>
     </>
