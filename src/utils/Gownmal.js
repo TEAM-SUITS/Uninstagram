@@ -32,11 +32,11 @@ export default converter;
 
 /* TEST--------------------------------------------------------------------- */
 
-const testStr1 = '진짜 다행이네요 ㅠㅠ 고맙습니다.. 님도 힘내시고 행복하세요!! 좋은 일만 있으시길~';
-const testStr2 = '오예 내 최애가수 이번 신곡 진짜 대박 >< 진짜 좋아!';
-const testStr3 = '저 오늘 남자친구랑 데이트하기로 했어요!';
-const testStr4 = '이거 진짜 귀엽지않나요 ㅎㅎ 제가 좋아하는 캐릭터에요!';
-const testStr5 = '어제 본 영화 진짜 감동적이었어용 ㅎㅎ 강추합니다!';
+// const testStr1 = '진짜 다행이네요 ㅠㅠ 고맙습니다.. 님도 힘내시고 행복하세요!! 좋은 일만 있으시길~';
+// const testStr2 = '오예 내 최애가수 이번 신곡 진짜 대박 >< 진짜 좋아!';
+// const testStr3 = '저 오늘 남자친구랑 데이트하기로 했어요!';
+// const testStr4 = '이거 진짜 귀엽지않나요 ㅎㅎ 제가 좋아하는 캐릭터에요!';
+// const testStr5 = '어제 본 영화 진짜 감동적이었어용 ㅎㅎ 강추합니다!';
 
 // console.log(converter(testStr1));
 // console.log(converter(testStr2));

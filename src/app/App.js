@@ -19,8 +19,6 @@ import {
 /* -------------------------------------------------------------------------- */
 
 function App() {
-  const [loginStatus, setLoginStatus] = React.useState(false);
-
   const { userName } = useSelector((state) => selectCurrentUser(state));
 
   return (
