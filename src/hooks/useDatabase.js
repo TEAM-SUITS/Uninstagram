@@ -18,7 +18,7 @@ export default function useDatabase(collectionName) {
   const submitPost = async (post) => {
     const date = new Date();
     await postsRef.add({
-      createdAt: date.toUTCString(),
+      createdAt: date,
       content: post.content,
       user: post.userName,
       avatarUrl: post.avatar,
@@ -28,7 +28,7 @@ export default function useDatabase(collectionName) {
   useEffect(() => {
     setLoading(true);
     const unsubscribe = postsRef
-      .orderBy("createdAt", "desc")
+      .orderBy("createdAt")
       .onSnapshot((querySnapshot) => {
         const _posts = [];
         querySnapshot.forEach((doc) => {
