@@ -5,7 +5,6 @@ export default function useDatabase(collectionName) {
   const [loading, setLoading] = useState(false);
   const [posts, setPosts] = useState();
   const postsRef = db.collection(collectionName);
-
   const findPost = async (query) => {
     //https://stackoverflow.com/a/56815787/13307617 partial search
     const result = await postsRef
